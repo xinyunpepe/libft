@@ -6,12 +6,11 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 11:56:47 by xli               #+#    #+#             */
-/*   Updated: 2020/12/08 12:38:38 by xli              ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 16:30:24 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_strdup(const char *s1)
 {

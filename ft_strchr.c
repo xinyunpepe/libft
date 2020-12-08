@@ -6,12 +6,11 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 14:48:02 by xli               #+#    #+#             */
-/*   Updated: 2020/12/08 12:09:06 by xli              ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 16:30:09 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 char	*ft_strchr(const char *s, int c)
 {

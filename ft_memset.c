@@ -6,12 +6,11 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 17:26:57 by xli               #+#    #+#             */
-/*   Updated: 2020/12/08 12:09:06 by xli              ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 16:29:52 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
 
 void	*ft_memset(void *b, int c, size_t len)
 {

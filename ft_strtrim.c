@@ -6,12 +6,11 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 15:19:46 by xli               #+#    #+#             */
-/*   Updated: 2020/12/08 12:09:06 by xli              ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 16:32:48 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
 
 char	*ft_strtrim(char const *s1, char const *set)
 {

@@ -6,13 +6,11 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 12:23:55 by xli               #+#    #+#             */
-/*   Updated: 2020/12/08 12:09:06 by xli              ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 16:29:00 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
-#include <stdio.h>
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {

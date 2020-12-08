@@ -6,11 +6,10 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 11:56:21 by xli               #+#    #+#             */
-/*   Updated: 2020/12/08 12:39:06 by xli              ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 16:35:09 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
 #include "libft.h"
 
 static	void	ft_min(int n, int fd)

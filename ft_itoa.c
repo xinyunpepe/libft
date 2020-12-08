@@ -6,14 +6,13 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 11:55:29 by xli               #+#    #+#             */
-/*   Updated: 2020/12/08 12:37:54 by xli              ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 16:28:30 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include "libft.h"
 
-static	int	n_len(long n)
+static	int		num_len(long n)
 {
 	int len;
 
@@ -31,14 +30,14 @@ static	int	n_len(long n)
 	return (len);
 }
 
-char		*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
-	long	nb;
 	int		len;
+	long	nb;
 	char	*str;
 
 	nb = n;
-	len = n_len(nb);
+	len = num_len(nb);
 	if (!(str = malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	str[len--] = '\0';

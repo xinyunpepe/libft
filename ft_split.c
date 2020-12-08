@@ -1,25 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 16:52:12 by xli               #+#    #+#             */
-/*   Updated: 2020/12/08 16:32:03 by xli              ###   ########lyon.fr   */
+/*   Created: 2020/12/08 14:33:45 by xli               #+#    #+#             */
+/*   Updated: 2020/12/08 15:33:03 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+static	int	num_string(char const *s, char c)
 {
-	size_t	i;
+	int i;
+	int	num_string;
 
 	i = 0;
-	if (n == 0)
-		return (0);
-	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n - 1)
+	num_string = 0;
+	while (s[i])
+	{
+		while (s[i] != c)
+		{
+			if (s[i + 1] == c || s[i + 1] == '\0') 
+				num_string++;
+			i++;
+		}
 		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	}
+	return (num_string);
 }
+
+void	malloc_string(char const *s, char c)
+{
+	int i;
+	int	len;
+	
+	i = 0;
+	len = 0;
+	while (s[i])
+	{
+		while (s[i] != c && s)
+			
+
+
+char	**ft_split(char const *s, char c)
+

@@ -6,13 +6,11 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 15:12:32 by xli               #+#    #+#             */
-/*   Updated: 2020/12/08 12:34:20 by xli              ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 16:32:19 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
-#include <stdio.h>
 
 char	*ft_strnstr(const	char *haystack, const	char *needle, size_t len)
 {
