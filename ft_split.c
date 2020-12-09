@@ -6,7 +6,7 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 14:33:45 by xli               #+#    #+#             */
-/*   Updated: 2020/12/08 15:33:03 by xli              ###   ########lyon.fr   */
+/*   Updated: 2020/12/09 16:51:42 by Pepe             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,19 @@ static	int	num_string(char const *s, char c)
 	return (num_string);
 }
 
-void	malloc_string(char const *s, char c)
+static char ft_free(char **tab)
 {
-	int i;
-	int	len;
-	
-	i = 0;
-	len = 0;
-	while (s[i])
-	{
-		while (s[i] != c && s)
-			
+    int i;
 
+    i = 0;
+    while (tab[i])
+    {
+        free(tab[i]);
+        i++;
+    }
+    free(tab);
+    return (NULL);
+}
 
 char	**ft_split(char const *s, char c)
 
