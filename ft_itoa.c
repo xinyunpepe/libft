@@ -6,13 +6,13 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 11:55:29 by xli               #+#    #+#             */
-/*   Updated: 2020/12/08 16:28:30 by xli              ###   ########lyon.fr   */
+/*   Updated: 2020/12/10 12:29:44 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int		num_len(long n)
+static	int		nb_len(long n)
 {
 	int len;
 
@@ -37,7 +37,7 @@ char			*ft_itoa(int n)
 	char	*str;
 
 	nb = n;
-	len = num_len(nb);
+	len = nb_len(nb);
 	if (!(str = malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	str[len--] = '\0';
