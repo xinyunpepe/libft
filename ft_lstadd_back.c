@@ -6,7 +6,7 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 13:35:29 by xli               #+#    #+#             */
-/*   Updated: 2020/12/10 13:49:10 by xli              ###   ########lyon.fr   */
+/*   Updated: 2020/12/12 16:13:10 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 
 	if (!lst || !new)
 		return ;
+	if (!(*lst))
+	{
+		*lst = new;
+		return ;
+	}
 	last = ft_lstlast(*lst);
 	last->next = new;
 }

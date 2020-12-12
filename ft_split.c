@@ -6,7 +6,7 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 10:19:35 by xli               #+#    #+#             */
-/*   Updated: 2020/12/10 10:57:15 by xli              ###   ########lyon.fr   */
+/*   Updated: 2020/12/12 16:47:23 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static	unsigned int	ft_nb_str(char const *s, char c)
 	if (!s[0])
 		return (0);
 	i = 0;
-	nb_str = 0;
+	nb_str = 1;
 	while (s[i] && s[i] == c)
 		i++;
 	while (s[i])
@@ -37,7 +37,8 @@ static	unsigned int	ft_nb_str(char const *s, char c)
 	return (nb_str);
 }
 
-static	void	ft_next_str(char **next_str, unsigned int *next_str_len, char c)
+static	void			ft_next_str(char **next_str, unsigned int *next_str_len,
+						char c)
 {
 	unsigned int i;
 
@@ -46,16 +47,16 @@ static	void	ft_next_str(char **next_str, unsigned int *next_str_len, char c)
 	i = 0;
 	while (**next_str && **next_str == c)
 		(*next_str)++;
-	while (*next_str[i])
+	while (*(*next_str + i))
 	{
-		if ((*next_str)[i] == c)
+		if (*(*next_str + i) == c)
 			return ;
 		(*next_str_len)++;
 		i++;
 	}
 }
 
-static	char	**ft_free(char **tab)
+static	char			**ft_free(char **tab)
 {
 	unsigned int i;
 
@@ -69,7 +70,7 @@ static	char	**ft_free(char **tab)
 	return (NULL);
 }
 
-char			**ft_split(char const *s, char c)
+char					**ft_split(char const *s, char c)
 {
 	char			**tab;
 	char			*next_str;
