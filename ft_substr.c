@@ -6,7 +6,7 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 11:55:39 by xli               #+#    #+#             */
-/*   Updated: 2020/12/14 15:51:42 by xli              ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 16:30:56 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,14 @@ char			*ft_substr(char const *s, unsigned int start, size_t len)
 		str[0] = '\0';
 		return (str);
 	}
-	if (!(str = (char *)malloc(sizeof(*s) * ft_min(len + 1, ft_strlen(s) - start + 1))))
+	if (!(str = malloc(ft_min(len + 1, ft_strlen(s) - start + 1))))
 		return (NULL);
 	i = 0;
 	j = 0;
 	while (s[i])
 	{
 		if (i >= start && j < len)
-		{
-			str[j] = s[i];
-			j++;
-		}
+			str[j++] = s[i];
 		i++;
 	}
 	str[j] = '\0';

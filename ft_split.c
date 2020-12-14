@@ -6,39 +6,17 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 10:19:35 by xli               #+#    #+#             */
-/*   Updated: 2020/12/14 16:08:41 by xli              ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 16:16:59 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static	unsigned int	ft_nb_str(char const *s, char c)
-/*{
-	unsigned int	i;
-	unsigned int	nb_str;
-
-	if (!s[0])
-		return (0);
-	i = 0;
-	nb_str = 0;
-	while (s[i] && s[i] == c)
-		i++;
-	while (s[i])
-	{
-		if (s[i] == c)
-		{
-			nb_str++;
-			while (s[i] && s[i] == c)
-				i++;
-			continue ;
-		}
-		i++;
-	}
-	return (nb_str);
-}*/
 {
 	unsigned int i;
 	unsigned int nb_str;
+
 	if (!s[0])
 		return (0);
 	i = 0;
@@ -53,8 +31,9 @@ static	unsigned int	ft_nb_str(char const *s, char c)
 		while (s[i] && s[i] == c)
 			i++;
 	}
-	return nb_str;
+	return (nb_str);
 }
+
 static	void			ft_next_str(char **next_str, unsigned int *next_str_len,
 						char c)
 {
@@ -99,8 +78,6 @@ char					**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	nb_str = ft_nb_str(s, c);
-	//if (nb_str == 0 && ft_strlen(s) > 0 && s[0] != c)
-	//	nb_str++;
 	if (!(tab = (char **)malloc(sizeof(char *) * (nb_str + 1))))
 		return (NULL);
 	i = 0;
