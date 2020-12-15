@@ -6,7 +6,7 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 14:35:01 by xli               #+#    #+#             */
-/*   Updated: 2020/12/14 16:34:55 by xli              ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 09:36:11 by Pepe             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*new_lst;
 	t_list	*new_elem;
 
-	if (!f || !del)
+	if (!lst || !(new_lst = ft_lstnew(f(lst->content))))
 		return (NULL);
 	new_lst = NULL;
 	while (lst)
