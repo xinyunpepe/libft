@@ -6,7 +6,7 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 15:19:46 by xli               #+#    #+#             */
-/*   Updated: 2020/12/08 16:32:48 by xli              ###   ########lyon.fr   */
+/*   Updated: 2021/03/16 14:29:51 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	len = ft_strlen(s1);
 	while (len && ft_strchr(set, s1[len]))
 		len--;
-	str = ft_substr((char*)s1, 0, len + 1);
+	str = ft_substr((char *)s1, 0, len + 1);
 	return (str);
 }

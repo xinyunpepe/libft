@@ -6,13 +6,13 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 11:56:21 by xli               #+#    #+#             */
-/*   Updated: 2020/12/08 16:35:09 by xli              ###   ########lyon.fr   */
+/*   Updated: 2021/03/16 14:24:40 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	void	ft_min(int n, int fd)
+static	void	ft_minnn(int n, int fd)
 {
 	if (n == INT_MIN)
 		ft_putstr_fd("-2147483648", fd);
@@ -20,13 +20,13 @@ static	void	ft_min(int n, int fd)
 		ft_putchar_fd('0', fd);
 }
 
-void			ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	if (fd < 0)
 		return ;
 	if (n == 0 || n == INT_MIN)
 	{
-		ft_min(n, fd);
+		ft_minnn(n, fd);
 		return ;
 	}
 	if (n < 0)

@@ -6,7 +6,7 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 13:58:58 by xli               #+#    #+#             */
-/*   Updated: 2020/12/08 16:27:08 by xli              ###   ########lyon.fr   */
+/*   Updated: 2021/04/10 11:33:56 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	x;
-	int	neg;
+	long long int	i;
+	long long int	x;
+	int				neg;
 
 	i = 0;
 	x = 0;

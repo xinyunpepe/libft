@@ -6,42 +6,33 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 11:55:39 by xli               #+#    #+#             */
-/*   Updated: 2020/12/14 16:30:56 by xli              ###   ########lyon.fr   */
+/*   Updated: 2021/03/16 15:07:11 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	size_t	ft_min(size_t a, size_t b)
-{
-	return (a < b ? a : b);
-}
-
-char			*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	size_t	j;
 	char	*str;
 
-	if (!s)
-		return (NULL);
 	if (ft_strlen(s) <= start)
 	{
-		if (!(str = (char*)malloc(sizeof(char))))
+		str = (char *)ft_malloc(1, sizeof(char));
+		if (str == NULL)
 			return (NULL);
 		str[0] = '\0';
 		return (str);
 	}
-	if (!(str = malloc(ft_min(len + 1, ft_strlen(s) - start + 1))))
+	i = (size_t)ft_min((int)ft_strlen(s) - start, (int)len);
+	str = ft_malloc(i, sizeof(char));
+	if (!s || str == NULL)
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (s[i])
-	{
-		if (i >= start && j < len)
-			str[j++] = s[i];
-		i++;
-	}
+	j = -1;
+	while (++j < i)
+		str[j] = s[start + j];
 	str[j] = '\0';
 	return (str);
 }

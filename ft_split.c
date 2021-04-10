@@ -6,7 +6,7 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 10:19:35 by xli               #+#    #+#             */
-/*   Updated: 2020/12/14 16:16:59 by xli              ###   ########lyon.fr   */
+/*   Updated: 2021/04/10 12:03:21 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static	unsigned int	ft_nb_str(char const *s, char c)
 {
-	unsigned int i;
-	unsigned int nb_str;
+	unsigned int	i;
+	unsigned int	nb_str;
 
 	if (!s[0])
 		return (0);
@@ -34,10 +34,10 @@ static	unsigned int	ft_nb_str(char const *s, char c)
 	return (nb_str);
 }
 
-static	void			ft_next_str(char **next_str, unsigned int *next_str_len,
+static	void	ft_next_str(char **next_str, unsigned int *next_str_len,
 						char c)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	*next_str += *next_str_len;
 	*next_str_len = 0;
@@ -53,21 +53,18 @@ static	void			ft_next_str(char **next_str, unsigned int *next_str_len,
 	}
 }
 
-static	char			**ft_free(char **tab)
+static char		**ft_freeee(char **tab)
 {
-	unsigned int i;
+	int	ct;
 
-	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
+	ct = -1;
+	while (tab[++ct])
+		ft_memory(0, 0, tab[ct], pop);
+	ft_memory(0, 0, tab, pop);
 	return (NULL);
 }
 
-char					**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char			**tab;
 	char			*next_str;
@@ -78,18 +75,19 @@ char					**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	nb_str = ft_nb_str(s, c);
-	if (!(tab = (char **)malloc(sizeof(char *) * (nb_str + 1))))
+	tab = ft_memory(nb_str + 1, sizeof(char *), 0, push);
+	if (tab == NULL)
 		return (NULL);
 	i = 0;
 	next_str = (char *)s;
 	next_str_len = 0;
-	while (i < nb_str)
+	while (i++ < nb_str)
 	{
 		ft_next_str(&next_str, &next_str_len, c);
-		if (!(tab[i] = (char *)malloc(sizeof(char) * (next_str_len + 1))))
-			return (ft_free(tab));
+		tab[i] = ft_memory(next_str_len + 1, sizeof(char *), 0, push);
+		if (tab[i] == NULL)
+			return (ft_freeee(tab));
 		ft_strlcpy(tab[i], next_str, next_str_len + 1);
-		i++;
 	}
 	tab[i] = NULL;
 	return (tab);

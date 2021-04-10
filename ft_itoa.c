@@ -6,15 +6,15 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 11:55:29 by xli               #+#    #+#             */
-/*   Updated: 2020/12/12 14:37:13 by xli              ###   ########lyon.fr   */
+/*   Updated: 2021/03/16 14:39:08 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int		ft_nb_len(long n)
+static	int	ft_nb_len(long n)
 {
-	int len;
+	int	len;
 
 	len = 1;
 	if (n < 0)
@@ -30,7 +30,7 @@ static	int		ft_nb_len(long n)
 	return (len);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	long	nb;
 	int		len;
@@ -38,7 +38,8 @@ char			*ft_itoa(int n)
 
 	nb = n;
 	len = ft_nb_len(nb);
-	if (!(str = malloc(sizeof(char) * (len + 1))))
+	str = ft_malloc(len + 1, sizeof(char));
+	if (str == NULL)
 		return (NULL);
 	str[len--] = '\0';
 	if (nb == 0)

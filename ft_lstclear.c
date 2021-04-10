@@ -6,7 +6,7 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 14:09:31 by xli               #+#    #+#             */
-/*   Updated: 2020/12/10 14:23:54 by xli              ###   ########lyon.fr   */
+/*   Updated: 2021/03/16 14:18:09 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list *element;
-	t_list *next;
+	t_list	*element;
+	t_list	*next;
 
 	if (!lst)
 		return ;

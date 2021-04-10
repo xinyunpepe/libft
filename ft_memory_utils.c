@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_memory_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/10 14:35:01 by xli               #+#    #+#             */
-/*   Updated: 2021/03/16 14:39:40 by xli              ###   ########lyon.fr   */
+/*   Created: 2021/03/05 10:00:11 by xli               #+#    #+#             */
+/*   Updated: 2021/03/16 09:14:15 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+void	*ft_malloc(size_t count, size_t size)
 {
-	t_list	*new_lst;
-	t_list	*new_elem;
+	return (ft_memory(count, size, NULL, push));
+}
 
-	new_lst = ft_lstnew(f(lst->content));
-	if (!lst || new_lst == NULL)
-		return (NULL);
-	new_lst = NULL;
-	while (lst)
-	{
-		new_elem = ft_lstnew(f(lst->content));
-		if (new_elem == NULL)
-		{
-			ft_lstclear(&new_lst, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&new_lst, new_elem);
-		lst = lst->next;
-	}
-	return (new_lst);
+void	ft_free(void *del)
+{
+	ft_memory(0U, 0U, del, pop);
+}
+
+void	ft_free_all(void)
+{
+	ft_memory(0U, 0U, NULL, clear);
 }

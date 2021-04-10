@@ -6,7 +6,7 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 11:56:47 by xli               #+#    #+#             */
-/*   Updated: 2020/12/08 16:30:24 by xli              ###   ########lyon.fr   */
+/*   Updated: 2021/03/16 14:27:25 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ char	*ft_strdup(const char *s1)
 	char	*str;
 
 	len = ft_strlen(s1);
-	if (!(str = malloc(sizeof(char) * (len + 1))))
+	str = malloc(sizeof(char) * (len + 1));
+	if (str == NULL)
 		return (NULL);
 	i = 0;
 	while (i < len)

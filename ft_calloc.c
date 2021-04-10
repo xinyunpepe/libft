@@ -6,7 +6,7 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 15:12:18 by xli               #+#    #+#             */
-/*   Updated: 2020/12/08 16:27:55 by xli              ###   ########lyon.fr   */
+/*   Updated: 2021/03/16 14:55:58 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	*ft_calloc(size_t count, size_t size)
 	size_t	i;
 	char	*dst;
 
-	if (!(dst = malloc(count * size)))
+	dst = ft_malloc(count, size);
+	if (dst == NULL)
 		return (NULL);
 	i = 0;
 	while (i <= count * size)
@@ -25,5 +26,5 @@ void	*ft_calloc(size_t count, size_t size)
 		dst[i] = 0;
 		i++;
 	}
-	return ((void*)dst);
+	return ((void *)dst);
 }
