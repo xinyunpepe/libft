@@ -5,124 +5,63 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/15 17:08:54 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/10 09:56:47 by xli              ###   ########lyon.fr   */
+/*   Created: 2020/12/14 13:24:43 by xli               #+#    #+#             */
+/*   Updated: 2021/03/16 14:44:34 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/minirt.h"
 
-char	*ft_substr2(char const *s, int start, int len)
+size_t	get_len(const char *s)
 {
-	char	*ans;
-	int		ct;
+	int	i;
 
-	ans = malloc((len + 1) * sizeof(char));
-	if (ans == NULL)
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+char	*get_join(char *s1, const char *s2)
+{
+	size_t	i;
+	size_t	j;
+	size_t	len;
+	char	*str;
+
+	if (!s1 || !s2)
 		return (NULL);
-	ct = 0;
-	while (ct < len && s[ct] != '\0')
-	{
-		ans[ct] = s[start + ct];
-		ct++;
-	}
-	ans[ct] = '\0';
-	return (ans);
-}
-
-int	ft_str_add(t_lst *dst, char *s, int len)
-{
-	t_str	*str;
-	t_str	*temp;
-	int		idx;
-
-	str = malloc(1 * sizeof(t_str));
-	if (len < 0 || !s || !str)
-		return (-1);
-	idx = -1;
-	str->next = 0;
-	str->s = malloc((len + 1) * sizeof(char));
-	if (str->s == NULL)
-		return (-1);
-	while (++idx < len)
-		str->s[idx] = s[idx];
-	str->s[idx] = '\0';
-	temp = dst->str;
-	if (!temp)
-	{
-		dst->str = str;
-		dst->len = len;
-		return (1);
-	}
-	while (temp->next)
-		temp = temp->next;
-	temp->next = str;
-	dst->len += len;
-	return (1);
-}
-
-t_lst	*ft_lst_add(t_lst **dst, int fd)
-{
-	t_lst	*temp;
-
-	temp = malloc(1 * sizeof(t_lst));
-	if (temp == NULL)
+	len = get_len(s1) + get_len(s2);
+	str = ft_malloc(len + 1, sizeof(char));
+	if (str == NULL)
 		return (NULL);
-	temp->str = 0;
-	temp->len = 0;
-	temp->fd = fd;
-	temp->idx = 0;
-	temp->next = 0;
-	if (*dst == 0)
-		*dst = temp;
-	else
+	i = 0;
+	j = 0;
+	while (s1[i])
 	{
-		temp->next = *dst;
-		*dst = temp;
+		str[i] = s1[i];
+		i++;
 	}
-	return (temp);
+	while (s2[j])
+		str[i++] = s2[j++];
+	str[i] = '\0';
+	return (str);
 }
 
-int	ft_clean_lst(t_lst *lst)
+int	get_return(char *s)
 {
-	t_str	*temp;
+	int	i;
 
-	lst->idx = 0;
-	lst->len = 0;
-	while (lst->str)
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i])
 	{
-		temp = lst->str;
-		lst->str = lst->str->next;
-		free(temp->s);
-		free(temp);
+		if (s[i] == '\n')
+			return (1);
+		i++;
 	}
-	lst->str = 0;
 	return (0);
-}
-
-int	ft_del_lst(t_lst *target, t_lst **head, int *res)
-{
-	t_lst	*temp;
-
-	if (res[1] != -1 && target->len)
-		return (1);
-	if (target == *head)
-	{
-		if (target->str)
-			ft_clean_lst(target);
-		if (target->next)
-			*head = target->next;
-		else
-			*head = 0;
-		free(target);
-		return (res[1] == -1 ? -1 : (res[1] == 1 && res[0]));
-	}
-	temp = *head;
-	while (temp->next != target)
-		temp = temp->next;
-	temp->next = target->next;
-	if (target->str)
-		ft_clean_lst(target);
-	free(target);
-	return (res[1] == -1 ? -1 : (res[1] == 1 && res[0]));
 }

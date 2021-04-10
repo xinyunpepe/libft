@@ -5,132 +5,85 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/15 17:08:32 by yfu               #+#    #+#             */
-/*   Updated: 2021/04/10 09:58:22 by xli              ###   ########lyon.fr   */
+/*   Created: 2020/12/17 10:26:55 by xli               #+#    #+#             */
+/*   Updated: 2021/03/16 15:31:33 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/minirt.h"
 
-static int	ft_fill(char **line, t_lst *temp)
+char	*get_save(char *save)
 {
-	int		idx[2];
-	t_str	*str;
+	int		i;
+	int		j;
+	char	*str;
 
-	*line = malloc(((temp->len) - (temp->idx) + 1) * sizeof(char));
-	if (*line == NULL)
-		return (-1);
-	idx[0] = temp->idx;
-	idx[1] = 0;
-	str = temp->str;
-	while (idx[1] < (temp->len) - (temp->idx))
-	{
-		if (str->s[idx[0]] == '\0')
-		{
-			str = str->next;
-			idx[0] = 0;
-		}
-		line[0][idx[1]++] = str->s[idx[0]++];
-	}
-	line[0][idx[1]] = '\0';
-	return (ft_clean_lst(temp));
+	if (!save)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (save[i] && save[i] != '\n')
+		i++;
+	if (!save[i])
+		return (NULL);
+	str = ft_malloc(get_len(save) - i + 1, sizeof(char));
+	if (str == NULL)
+		return (NULL);
+	i++;
+	while (save[i])
+		str[j++] = save[i++];
+	str[j] = '\0';
+	return (str);
 }
 
-static int	ft_end(char **line, t_lst *temp, int res, char *buff)
+char	*get_line(char *s)
 {
-	int	idx[3];
+	int		i;
+	char	*d;
 
-	if (res == 0 && temp->len == 0)
-		return (1);
-	idx[0] = 0;
-	if (res && *buff == '\n')
+	if (!s)
+		return (NULL);
+	i = 0;
+	while (s[i] && s[i] != '\n')
+		i++;
+	d = ft_malloc(i + 1, sizeof(char));
+	if (d == NULL)
+		return (NULL);
+	i = 0;
+	while (s[i] && s[i] != '\n')
 	{
-		return (ft_fill(line, temp) == -1 ?
-				-1 : ft_str_add(temp, buff + 1, res - 1));
+		d[i] = s[i];
+		i++;
 	}
-	while (idx[0] < res && buff[idx[0]] != '\n')
-		idx[0]++;
-	if (ft_str_add(temp, buff, idx[0]) == -1)
-		return (-1);
-	if (res != BUFFER_SIZE || idx[0] < res)
-	{
-		if (ft_fill(line, temp) == -1)
-			return (-1);
-		return (res == idx[0] ?
-			2 : ft_str_add(temp, buff + idx[0] + 1, res - idx[0] - 1));
-	}
-	return (0);
-}
-
-static int	ft_check(t_lst *temp, char **line, t_lst *save)
-{
-	int	ct[3];
-
-	if (temp->len > temp->idx && temp->str->s[temp->idx] == '\n')
-	{
-		(temp->idx)++;
-		*line = ft_substr2("", 0, 0);
-		return (1);
-	}
-	ct[0] = -1;
-	ct[1] = 0;
-	while (++ct[0] + (temp->idx) < (temp->len))
-		if (temp->str->s[ct[0] + temp->idx] == '\n')
-			break ;
-	if (ct[0] == 0)
-		return (ft_clean_lst(temp));
-	if (ct[0] + temp->idx < temp->len)
-	{
-		line[0] = ft_substr2(temp->str->s, temp->idx, ct[0]);
-		(temp->idx) += ct[0] + 1;
-		if (temp->len == temp->idx)
-			ft_del_lst(temp, &save, (int *)ct);
-		return (1);
-	}
-	return (0);
-}
-
-static void	ft_gnl(int *res, char *buff, char **line, t_lst *temp)
-{
-	res[0] = read(res[2], buff, BUFFER_SIZE);
-	if (res[0] == -1)
-	{
-		res[1] = -1;
-		return ;
-	}
-	buff[res[0]] = '\0';
-	res[1] = ft_end(line, temp, res[0], (char *)buff);
-	if (res[1] == 1 || res[1] == 2 || res[0] == 0)
-		if (*line == 0)
-			*line = ft_substr2("", 0, 0);
+	d[i] = '\0';
+	return (d);
 }
 
 int	get_next_line(int fd, char **line)
 {
-	char				buff[BUFFER_SIZE + 1];
-	static t_lst		*save;
-	t_lst				*temp;
-	int					res[3];
+	static char	*save;
+	char		buff[BUFFER_SIZE + 1];
+	int			i;
 
-	if (fd < 0 || BUFFER_SIZE < 1 || !line)
+	if (fd < 0 || !line || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (-1);
-	temp = save;
-	while (temp && temp->fd != fd)
-		temp = temp->next;
-	temp = ft_lst_add(&save, fd);
-	if (!temp && !temp)
-		return (-1);
-	*line = 0;
-	if (ft_check(temp, line, save))
-		return (1);
-	res[2] = fd;
-	while (1)
+	if (!save)
 	{
-		ft_gnl((int *)res, buff, line, temp);
-		if (res[0] == -1 || res[1] == -1)
-			return (ft_del_lst(temp, &save, (int *)res));
-		if (res[1] == 1 || res[1] == 2 || res[0] == 0)
-			break ;
+		save = ft_malloc(1, sizeof(char));
+		if (save == NULL)
+			return (-1);
+		save[0] = '\0';
 	}
-	return (ft_del_lst(temp, &save, (int *)res));
+	i = 1;
+	while (!get_return(save) && i != 0)
+	{
+		i = read(fd, buff, BUFFER_SIZE);
+		if (i == -1)
+			return (-1);
+		buff[i] = '\0';
+		save = get_join(save, buff);
+	}
+	*line = get_line(save);
+	save = get_save(save);
+	return (ft_min(i, 1));
 }
