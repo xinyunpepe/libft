@@ -6,7 +6,7 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 11:32:40 by xli               #+#    #+#             */
-/*   Updated: 2020/12/08 16:31:29 by xli              ###   ########lyon.fr   */
+/*   Updated: 2021/04/21 12:54:30 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlen(const	char *s)
 	size_t	i;
 
 	i = 0;
+	if (s == NULL)
+		return (i);
 	while (s[i])
 		i++;
 	return (i);

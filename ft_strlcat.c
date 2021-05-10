@@ -6,7 +6,7 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 14:12:28 by xli               #+#    #+#             */
-/*   Updated: 2020/12/14 15:34:25 by xli              ###   ########lyon.fr   */
+/*   Updated: 2021/05/04 09:18:50 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,19 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	}
 	dst[dstlen + i] = '\0';
 	return (dstlen + srclen);
+}
+
+void	ft_strcat(char *s1, char *s2)
+{
+	int	n;
+	int	i;
+
+	n = ft_strlen(s1);
+	i = 0;
+	while (s2[i])
+	{
+		s1[n + i] = s2[i];
+		i++;
+	}
+	s1[n + i] = '\0';
 }

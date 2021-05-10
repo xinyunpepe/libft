@@ -6,7 +6,7 @@
 #    By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/25 13:44:54 by xli               #+#    #+#              #
-#    Updated: 2021/04/10 10:05:07 by xli              ###   ########lyon.fr    #
+#    Updated: 2021/04/15 10:44:53 by xli              ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,6 @@ SRCS =	ft_memset.c \
 		ft_substr.c \
 		ft_strjoin.c \
 		ft_strtrim.c \
-		ft_split.c \
 		ft_itoa.c \
 		ft_strmapi.c \
 		ft_putchar_fd.c \
@@ -65,8 +64,7 @@ BONUS_SRCS =	ft_lstnew.c \
 				ft_memory_utils.c \
 				ft_minmax.c \
 				get_next_line.c \
-				get_next_line_utils.c\
-				ft_isspace.c
+				get_next_line_utils.c
 
 HEADER = libft.h
 

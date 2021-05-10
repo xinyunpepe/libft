@@ -6,7 +6,7 @@
 /*   By: xli <xli@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 10:04:02 by xli               #+#    #+#             */
-/*   Updated: 2021/03/16 14:21:47 by xli              ###   ########lyon.fr   */
+/*   Updated: 2021/04/15 15:11:47 by xli              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ static	void	ft_lstdelone_2(t_list **head, t_list *lst, void (*del)(void *))
 	free(lst);
 }
 
-static	void	*ft_calloc_2(size_t count, size_t size)
+static	void	*ft_calloc_2(size_t ct, size_t size)
 {
 	void	*dst;
 
-	dst = malloc(count * size);
+	dst = malloc(ct * size);
 	if (dst == NULL)
 		return (NULL);
-	ft_memset(dst, 0, count * size);
+	ft_memset(dst, 0, ct * size);
 	return (dst);
 }
 
@@ -74,14 +74,14 @@ static	void	ft_lstclear_2(t_list **lst, void (*del)(void *))
 	*lst = NULL;
 }
 
-void	*ft_memory(size_t count, size_t size, void *del, t_memory type)
+void	*ft_memory(size_t ct, size_t size, void *del, t_memory type)
 {
 	static t_list	*head;
 	void			*new_mem;
 
 	if (type == push)
 	{
-		new_mem = ft_calloc_2(count, size);
+		new_mem = ft_calloc_2(ct, size);
 		if (new_mem == NULL)
 			ft_putstr_fd("ERROR_IN_FT_MEMORY_0\n", 1);
 		else if (!(ft_lstadd_front(&head, ft_lstnew_2(new_mem))))
